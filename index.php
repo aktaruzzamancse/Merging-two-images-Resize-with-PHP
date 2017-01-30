@@ -1,3 +1,10 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image resize with two image merge </title>
+</head>
+<body style="text-align: center;">
 <?php
 // File and new size
 $filename = 'IMG_1355.jpg';
@@ -6,8 +13,8 @@ $filename = 'IMG_1355.jpg';
 
 // Get new sizes
 list($width, $height) = getimagesize($filename);
-$newwidth = 180;
-$newheight = 180;
+$newwidth = 865;
+$newheight = 210;
 
 // Load
 $thumb = imagecreatetruecolor($newwidth, $newheight);
@@ -22,13 +29,12 @@ imagejpeg($thumb,"resize.jpeg");
 /*Resize*/
 
 /*Image Merge*/
- $dest = imagecreatefrompng('hMOdx.png');//Frame
+ $dest = imagecreatefromjpeg('Spectacular.jpg');//Frame
  $src = imagecreatefromjpeg('resize.jpeg'); // instart image
 
  imagealphablending($dest, false);
  imagesavealpha($dest, true);
- $thumb = imagecreatetruecolor(180, 180);
- imagecopymerge($dest, $src, 10, 9, 0, 0, 181, 180, 100); //have to play with these numbers for it to work for you, etc.
+ imagecopymerge($dest, $src, 604, 460, 0, 0, 865, 210, 100); //have to play with these numbers for it to work for you, etc.
 
 // //header('Content-Type: image/png');
   $img = imagepng($dest,'new.png');
@@ -36,4 +42,6 @@ imagejpeg($thumb,"resize.jpeg");
  imagedestroy($dest);
  imagedestroy($src);
 ?>
-<img src="new.png">
+<img style="max-width: 1170px;height: auto;" src="new.png">
+</body>
+</html>
